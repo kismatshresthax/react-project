@@ -1,5 +1,5 @@
 import './App.css';
-import Authorized from './Authorize';
+// import Authorized from './Authorize';
 import RegistrationForm from './RegistrationForm';
 
 function App() {
@@ -8,9 +8,10 @@ function App() {
 
 
 <RegistrationForm/>
-<Authorized/>
+{/* <Authorized/> */}
     </div>
   );
 }
 
 export default App;
+

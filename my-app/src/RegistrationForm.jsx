@@ -1,51 +1,93 @@
-import React, { useState } from 'react'
+import React from 'react';
+import { useState } from 'react';
 
- const RegistrationForm = () => {
-    const[username,setUserName]=useState("");
-    const[password,setPassword]=useState("");
-    const[confpassword,setConfirmPassword]=useState("");
-    const [error, setError] = useState(false);
+const RegistrationForm = () => {
+    const [userInfo, setUserInfo] = useState({
+        username: "",
+        password: "",
+        confirmPassword: "",
+    });
+    console.log(userInfo, "yesss");
+    // const [isError, setIsError] = useState('');
+    // const [password, setPassword] = useState('');
+    // const [register, setEnabled] = useState(true);
+    // const [confirmPassword,setConfirmPassword] = useState('');
+    // const onSubmit = () => {
+        // alert('Your Logged In');
+    // };
+//     const handleUserName = (event) => {
+//         console.log(event.target.value);
+//     setUserInfo(event.target.value);
+//     };
+    const handleUserName = ({target : {value}}) => {
+        console.log(value, "Event");
+        setUserInfo({...userInfo, username: value});
+        };
 
-    const handleUserName=(event)=>{
-        setUserName(event.target.value);
-    }
-    const handlePassword=(event)=>{
-        setPassword(event.target.value);
-    }
-    const handleConfirmPassword=(event)=>{
-        setConfirmPassword(event.target.value);
-    }
-    const handleSubmit=(e)=>{
-        e.preventDefault();
-       username!=="" || password!=="" || confpassword!=="" ? password===confpassword ? alert('Succesfully register') : setError(true):setError(true);    
-    }
-  return (
-    <form>
-    <div>
-        <label>Id:</label>
-        <input type="text" value={username} placeholder ="Email&Number" onChange={handleUserName} />
-        {error && username === "" ? (
-                    <p>please fill the username</p>
-                ) : (
-                    ""
-                )}
-        <label>Password:</label>
-        <input type="password" value={password} placeholder="password" onChange={handlePassword}/>
-        {error && password === "" ? (
-                    <p>please fill the password</p>
-                ) : (
-                    ""
-                )}
-        <label>Confirm Password:</label>
-        <input type="password" value={confpassword} placeholder = "password" onChange={handleConfirmPassword}/>
-        {error && password !== confpassword ? (
-                    <p>password do not match</p>
-                ) : (
-                    ""
-                )}<br/><br/>
-        <button type="submit" value="submit" onClick={handleSubmit}>Login</button>
-    </div>
-    </form>
-  )
-}
+    const handlePassword = ({target : {value}}) => {
+        console.log(value, "Event");
+        setUserInfo({...userInfo, password: value});
+        };
+
+    const handleConfirmPassword = ({target : {value}}) => {
+        console.log(value, "Event");
+        setUserInfo({...userInfo, confirmPassword: value});
+        };    
+
+//     const handleUserPassword = (event) => {
+//         console.log(event.target.value);
+//         setPassword(event.target.value);
+//     };
+
+//     const handleConfirmPassword = (event) => {
+//         setConfirmPassword(event.target.value);
+//     };
+
+//     const handleSubmit = () => {
+//         if(password != confirmPassword){
+//             alert("Password Should Match")
+//         }else{username !== "" && password !== ""
+//             ? alert('Data Submited')
+//             : alert('Cannot Be Empty');
+//             setIsError(' ')
+//         }
+//     };
+
+    return (
+        <div>
+           <form>
+            <label>User Name</label>
+            <input
+                type="text"
+                id="user_input"
+                placeholder="Username"
+                onChange={handleUserName}
+            />
+            <br />
+            <label>Password</label>
+            <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                // onChange={handleUserPassword}
+                onChange={handlePassword}
+            />
+            <br />
+            <label>Confirm Password</label>
+            <input
+            // value={confirmPassword}
+            type="password"
+            id="password"
+            placeholder='Confirm Password'
+            onChange = {handleConfirmPassword}
+            />
+            <br/>
+            {/* <button type="submit" onClick={handleSubmit}>
+                Register
+            </button> */}
+            </form> 
+         </div>
+    );
+};
+
 export default RegistrationForm;
