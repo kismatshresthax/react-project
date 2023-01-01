@@ -1,17 +1,14 @@
 import './App.css';
-
-// import ClassComponentDemo from './component';
-// import ComponentLifeCycle from './ComponentLifeCycle';
-import CounterApp from './CounterApp';
+import Authorized from './Authorize';
+import RegistrationForm from './RegistrationForm';
 
 function App() {
-  // let name = 'app';
   return (
-    <div className="App">
-     
-     {/* <ClassComponentDemo/> */}
-{/* <ComponentLifeCycle name1 ={name}/> */}
-<CounterApp/>
+ <div>
+
+
+<RegistrationForm/>
+<Authorized/>
     </div>
   );
 }
