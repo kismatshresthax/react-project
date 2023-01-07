@@ -1,6 +1,6 @@
 // import { useState} from 'react';
 import Todo from './Todo';
-import './App.css';
+// import './App.css';
 import Tobe from './Tobe';
 
 // import ReducerHook from './ReducerHook';

@@ -1,37 +1,39 @@
-
 import React, { useState } from "react";
-const TodoList = () => {
+const Todo = () => {
   const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [edit, setEdit] = useState(false);
   const [editIndex, setEditIndex] = useState(-1);
 
   const handleSubmit = () => {
+    if (edit) {
+      setTodos((prevTodos) => {
+        prevTodos[editIndex] = inputValue;
+        return prevTodos;
+      });
 
-    setTodos((prevValue) => {
-      console.log(prevValue, "prev value");
-      
-      let arrValue = [...prevValue];
-      arrValue.push(inputValue);
-      return arrValue;
-    });
-    setInputValue("");
-    // }
+      setEdit(false);
+      setEditIndex(-1);
+      setInputValue("");
+    } else {
+      setTodos((prevValue) => {
+        console.log(prevValue, "prev value");
+        return [...prevValue, inputValue];
+      });
+      setInputValue("");
+    }
   };
-  // console.log(todos, "todos");
   const handleEdit = (index) => {
     console.log(index, "index");
+    setEditIndex(index);
     setInputValue(todos[index]);
     setEdit(true);
   };
   const handleDelete = (index) => {
     const newTodos = [...todos];
     newTodos.splice(index, 1);
-    console.log(newTodos, "tet");
     setTodos(newTodos);
   };
-  console.log(todos, "todos");
-
 
   const handleInputValue = ({ target: { value } }) => {
     setInputValue(value);
@@ -45,16 +47,16 @@ const TodoList = () => {
       <ul>
         {todos.map((todo, index) => {
           console.log(todo, "todo");
-        //   return (
-        //     <li key={index}>
-        //       {todo}
-        //       {/* <button onClick={() => handleEdit(index)}>Edit</button>
-        //       <button onClick={() => handleDelete(index)}>Delete</button> */}
-        //     </li>
-        //   );
+          return (
+            <li key={index}>
+              {todo}
+              <button onClick={() => handleEdit(index)}>Edit</button>
+              <button onClick={() => handleDelete(index)}>Delete</button>
+            </li>
+          );
         })}
       </ul>
     </div>
   );
 };
-export default TodoList;
+export default Todo;
