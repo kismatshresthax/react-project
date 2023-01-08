@@ -1,7 +1,7 @@
 // import { useState} from 'react';
 import Todo from './Todo';
 // import './App.css';
-import Tobe from './Tobe';
+// import Tobe from './Tobe';
 
 // import ReducerHook from './ReducerHook';
 // import Login from './Login';
@@ -20,7 +20,7 @@ function App() {
 {/* <Authorized/> */}
 {/* <ReducerHook/> */}
 <Todo/>
-<Tobe/>
+{/* <Tobe/> */}
     </div>
    
   );

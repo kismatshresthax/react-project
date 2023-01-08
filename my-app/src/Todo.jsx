@@ -1,5 +1,7 @@
 import SelectInput from "@mui/material/Select/SelectInput";
 import React, { useState } from "react";
+import { Button } from "@mui/material";
+import {TextField} from "@mui/material";
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const [info, setInfo] = useState({
@@ -47,12 +49,18 @@ const TodoList = () => {
     setInfo({ ...info, password: value });
   };
   return (
-    <div>
-      <input value={inputValue} onChange={handleInputValue} />
-      <input value={password} onChange={handlePassword} />
-      <button type="button" onClick={handleSubmit}>
+    
+    <div style={{
+                textAlign: 'center',
+                backgroundColor:"grey-green",
+    }}>
+      <h1>ADD USERNAME</h1>
+      <TextField style={{padding:5,margin:20}} label="first name" variant="standard"  value={inputValue} onChange={handleInputValue} />
+      <TextField style={{padding:5,margin:20}}  label="Last name" variant="standard" value={password} onChange={handlePassword} />
+      <Button style={{padding:5,margin:30}} variant ="contained"  type="button" onClick={handleSubmit}>
         {edit ? "Update" : "Add Todo"}
-      </button>
+      </Button>
+    
 
       <ul>
         {todos.map((tod, index) => {
@@ -61,11 +69,12 @@ const TodoList = () => {
             <li key={index}>
               <p> {tod.inputValue} </p>
               <p> {tod.password}</p>
-              <button onClick={() => handleEdit(index)}>Edit</button>
-              <button onClick={() => handleDelete(index)}>Delete</button>
+              <Button style={{padding:5,margin:20}}  variant="outlined"  onClick={() => handleEdit(index)}>Edit</Button>
+              <Button style={{padding:5,margin:20}}  variant="outlined"  onClick={() => handleDelete(index)}>Delete</Button>
             </li>
           );
         })}
+        
       </ul>
     </div>
   );
